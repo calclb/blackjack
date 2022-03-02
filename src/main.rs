@@ -114,7 +114,7 @@ fn main() {
         if winnings + change_in_winnings < 0.01 {
             println!("{}", "You were donated a cent from charity.".truecolor(wr, wg, wb));
         }
-        winnings = (winnings + change_in_winnings).max(0.01);
+        winnings = round_decimal((winnings + change_in_winnings).max(0.01), 2);
         any_key_continue().unwrap();
     }
 }
