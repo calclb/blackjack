@@ -288,14 +288,14 @@ fn report_earnings_progression(balance: f64, change: f64) -> String {
     let (fr, fg, fb) = FG_TEXT_COLOR;
 
     let change_str = if change > 0. {
-        format!("+ {} ", change.abs()).as_str().green().to_string()
+        format!("+ {} ", round_decimal(change.abs(), 2)).as_str().green().to_string()
     } else if change < 0. {
-        format!("- {} ", change.abs()).as_str().red().to_string()
+        format!("- {} ", round_decimal(change.abs(), 2)).as_str().red().to_string()
     } else {
         String::new()
     };
 
-    format!("{} {}➜ {}", format!("{}{}", WINNINGS_UNIT_STR, balance).as_str().truecolor(wr, wg, wb), change_str, format!("{}{}", WINNINGS_UNIT_STR, (balance + change).max(0.)).as_str().truecolor(wr, wg, wb)).as_str().truecolor(fr, fg, fb).to_string()
+    format!("{} {}➜ {}", format!("{}{}", WINNINGS_UNIT_STR, balance).as_str().truecolor(wr, wg, wb), change_str, format!("{}{}", WINNINGS_UNIT_STR, round_decimal((balance + change).max(0.), 2)).as_str().truecolor(wr, wg, wb)).as_str().truecolor(fr, fg, fb).to_string()
 }
 
 fn simulate_turn(deck: &mut Deck, hand: &mut Hand, decision: Decision) -> Outcome {
