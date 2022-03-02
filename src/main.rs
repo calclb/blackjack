@@ -192,7 +192,7 @@ fn play(bet: f64, deck: &mut Deck) -> f64
 
 
     println!("\n{}", "Your turn.".truecolor(pr, pg, pb).reversed());
-    let is_doubling_down = confirm(&*format!("Would you like to double down? It doubles the wager but force you to hit then stand. {}", "(y/n)".truecolor(br, bg, bb)), true).expect("failed to read from terminal");
+    let is_doubling_down = confirm(&*format!("Double down? This doubles the wager but forces you to hit then stand. {}", "(y/n)".truecolor(br, bg, bb)), true).expect("failed to read from terminal");
 
     //     5. Let the player make decisions (hit, stand, double down)
     let player_outcome = if is_doubling_down
