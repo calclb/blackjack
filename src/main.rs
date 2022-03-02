@@ -273,11 +273,11 @@ fn play(bet: f64, deck: &mut Deck) -> f64
         }
         Ordering::Greater => {
             println!("{}", "You won!".green());
-            round_decimal(bet * WIN_MULTIPLIER * if is_doubling_down { DOUBLE_DOWN_MULTIPLIER } else { 1. }, 2)
+            bet * WIN_MULTIPLIER * if is_doubling_down { DOUBLE_DOWN_MULTIPLIER } else { 1. }
         }
         Ordering::Less => {
-            print!("{}", "You lost!".red());
-            round_decimal(-bet * if is_doubling_down { DOUBLE_DOWN_MULTIPLIER } else { 1. }, 2)
+            println!("{}", "You lost!".red());
+            -bet * if is_doubling_down { DOUBLE_DOWN_MULTIPLIER } else { 1. }
         }
     };
     round_decimal(change, 2)
