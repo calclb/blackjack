@@ -124,10 +124,9 @@ fn main() {
             "You must enter at least a cent!",
             Box::new(|uinput| *uinput >= 0.01),
         );
-        let bid_prompter = Prompter::builder("Please enter a decimal!")
+        let bid_prompter = Prompter::new("Please enter a decimal!")
             .pred(cent_pred)
-            .pred(winnings_pred)
-            .build();
+            .pred(winnings_pred);
         let bet = round_decimal(
             bid_prompter.prompt(
                 format!("What is your bet? {}", WINNINGS_UNIT_STR.white())
@@ -448,7 +447,6 @@ fn simulate_turn(deck: &mut Deck, hand: &mut Hand, decision: Decision) -> Outcom
             hand.push_card(card_to_deal);
             let outcome = get_outcome(hand);
             println!("    {} {}", "HIT".yellow(), hand_as_str(hand));
-            // term.clear_line().expect("failed to clear line");
             outcome
         }
         Decision::Stand => {
