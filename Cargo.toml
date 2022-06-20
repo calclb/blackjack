@@ -6,7 +6,7 @@ edition = "2021"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-cardy = { path = "../../libraries/cardy" }
-prediput = { path = "../../libraries/prediput" }
+cardy = { path = "../../libraries/cardy" } # local library
+prediput = { path = "../../libraries/prediput" } # local library
 colored = "2"
 console = "0.15.0"

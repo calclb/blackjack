@@ -2,7 +2,7 @@ use std::{cmp::Ordering, fmt::{Formatter, Display}, time::Duration};
 
 use cardy::{face::Face, hand::Hand, holder::Holder};
 use colored::Colorize;
-use prediput::select::Selection;
+use prediput::select::Select;
 
 /// Value for a player to bust at.
 pub const BUST_THRESHOLD: usize = 21;
@@ -113,7 +113,7 @@ pub fn prompt_player() -> Decision {
 
     'prompting: loop
     {
-        let sel = Selection::new(&prefix, vec![(&hit_opt_string, Some(&hit_selected_string), Decision::Hit), (&stand_opt_string, Some(&stand_selected_string), Decision::Stand)])
+        let sel = Select::new(&prefix, vec![(&hit_opt_string, Some(&hit_selected_string), Decision::Hit), (&stand_opt_string, Some(&stand_selected_string), Decision::Stand)])
             .padding(1).override_prefix_len(3).aligned().clear_after();
 
         match sel.prompt("Make a decision:")
